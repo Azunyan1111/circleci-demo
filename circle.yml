@@ -4,11 +4,10 @@ jobs:
         working_directory: /go/src/github.com/ieee0824/circleci-demo
         docker:
             - image: golang:latest
-              environment:
-                  GO15VENDOREXPERIMENT: 1
         steps:
             - checkout
+            - setup_remote_docker
             - run:
-                name: "run go code"
+                name: check docker version
                 command: |
-                    go run main.go
+                    docker version
